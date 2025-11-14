@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: my-cm
+data:
+  PASSWORD: "shubham2"
+  USERNAME: "shubham-Ajbale"
