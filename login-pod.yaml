@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: login-app-pod
+  labels:
+    app: login-app
+spec:
+  containers:
+    - name: login-app
+      image: nginx
+      ports:
+        - containerPort: 80
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: login-service
+spec:
+  ports:
+   - targetPort: 80
+     port: 80
+     protocol: TCP  
+     name: login-service
+  selector:
+    app: login-app
+  type: NodePort
+
+

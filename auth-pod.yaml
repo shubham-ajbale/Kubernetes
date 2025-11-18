@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: auth-app-pod
+  labels:
+    app: auth-app
+spec:
+  containers:
+    - name: auth-app
+      image: httpd
+      ports:
+        - containerPort: 80
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: auth-service
+spec:
+  ports:
+   - targetPort: 80
+     port: 80
+     protocol: TCP  
+     name: auth-service
+  selector:
+    app: auth-app
+  type: NodePort
